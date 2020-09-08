@@ -9,13 +9,13 @@ version := "0.4.4-SNAPSHOT"
 
 organization := "org.scalanlp"
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.12.12"
 
-crossScalaVersions  := Seq("2.12.5", "2.11.7")
+crossScalaVersions  := Seq("2.12.12")
 
-javacOptions ++= Seq("-encoding", "UTF-8")
+javacOptions ++= Seq("-encoding", "UTF-8", "-source", "1.8", "-target", "1.8", "-parameters")
 
-scalacOptions ++= Seq("-encoding", "UTF-8","-deprecation", "-language:_", "-optimize")
+scalacOptions ++= Seq("-encoding", "UTF-8","-deprecation", "-language:_", "-optimize", "-target:jvm-1.8")
 
 resolvers ++= Seq(
   "ScalaNLP Maven2" at "http://repo.scalanlp.org/repo",
