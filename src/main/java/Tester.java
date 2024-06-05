@@ -1,3 +1,4 @@
+import io.github.pixee.security.SystemCommand;
 import java.util.*;
 import java.io.*;
 import java.lang.*;
@@ -346,7 +347,7 @@ public class Tester {
         System.out.println("******** Create all pools and datasets **********\n");
         String s = null;
         try {
-            Process p = Runtime.getRuntime().exec("python src/main/scala/JavaProject/PythonScripts/writeFilesFromDatabase.py 0.8 1"+Double.toString(noise));
+            Process p = SystemCommand.runCommand(Runtime.getRuntime(), "python src/main/scala/JavaProject/PythonScripts/writeFilesFromDatabase.py 0.8 1"+Double.toString(noise));
             BufferedReader stdInput = new BufferedReader(new
                     InputStreamReader(p.getInputStream()));
             BufferedReader stdError = new BufferedReader(new
@@ -403,7 +404,7 @@ public class Tester {
             String s = null;
             deleteDirectory(new File(pathToEpic+ "/epic/data/PoolData/unlabeledPool.txt"));
             try {
-                Process p = Runtime.getRuntime().exec("python src/main/scala/JavaProject/PythonScripts/makeChildConll.py "
+                Process p = SystemCommand.runCommand(Runtime.getRuntime(), "python src/main/scala/JavaProject/PythonScripts/makeChildConll.py "
                         + labeledPoolSize + " " + (trainingStrings.size() - 1)); // Input number of lines and number of models
                 BufferedReader stdInput = new BufferedReader(new
                         InputStreamReader(p.getInputStream()));
